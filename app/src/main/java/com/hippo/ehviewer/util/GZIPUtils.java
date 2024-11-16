@@ -8,6 +8,7 @@ import android.util.Base64;
 import android.widget.Toast;
 
 import com.hippo.ehviewer.R;
+import io.github.pixee.security.ZipSecurity;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -236,7 +237,7 @@ public class GZIPUtils {
      */
     public static List<File> GetFileList(String zipFileString, boolean bContainFolder, boolean bContainFile)throws Exception {
         List<File> fileList = new ArrayList<>();
-        ZipInputStream inZip = new ZipInputStream(new FileInputStream(zipFileString));
+        ZipInputStream inZip = ZipSecurity.createHardenedInputStream(new FileInputStream(zipFileString));
         ZipEntry zipEntry;
         String szName;
         while ((zipEntry = inZip.getNextEntry()) != null) {
