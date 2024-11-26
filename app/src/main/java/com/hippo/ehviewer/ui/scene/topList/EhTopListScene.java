@@ -36,6 +36,7 @@ import com.hippo.view.ViewTransition;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -322,7 +323,7 @@ public class EhTopListScene extends BaseScene {
 
         @Override
         int getRandomColor(int position) {
-            Random random = new Random();
+            Random random = new SecureRandom();
 
             if (hashMap.containsKey(position)) {
                 return hashMap.get(position);
