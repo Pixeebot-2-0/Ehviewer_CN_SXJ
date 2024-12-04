@@ -16,6 +16,7 @@
 
 package com.hippo.ehviewer.daogenerator;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -53,7 +54,7 @@ public final class Utilities {
                 InputStreamReader textReader = new InputStreamReader(new FileInputStream(file),encoding);
                 BufferedReader bufferedReader = new BufferedReader(textReader);
                 String line;
-                while ((line = bufferedReader.readLine()) != null){
+                while ((line = BoundedLineReader.readLine(bufferedReader, 5_000_000)) != null){
                     reader = reader+line;
                 }
             }else {
