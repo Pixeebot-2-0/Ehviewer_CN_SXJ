@@ -21,6 +21,8 @@ import android.text.TextUtils;
 import com.hippo.ehviewer.client.EhUrl;
 import com.hippo.ehviewer.client.data.ListUrlBuilder;
 import com.hippo.lib.yorozuya.Utilities;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
@@ -38,7 +40,7 @@ public final class GalleryListUrlParser {
     public static ListUrlBuilder parse(String urlStr) {
         URL url;
         try {
-            url = new URL(urlStr);
+            url = Urls.create(urlStr, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
         } catch (MalformedURLException e) {
             return null;
         }
