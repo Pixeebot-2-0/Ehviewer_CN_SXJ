@@ -1368,7 +1368,7 @@ public class Settings {
 
     public static File getUserImageFile(String key){
         String path = getString(key,"");
-        if (path.equals("")){
+        if ("".equals(path)){
             return null;
         }
         File file = new File(path);
