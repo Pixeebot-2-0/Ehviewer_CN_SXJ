@@ -438,7 +438,7 @@ public final class MainActivity extends StageActivity
         if (file != null) {
             String name = file.getName();
             String[] ns = name.split("\\.");
-            if (ns[1].equals("gif") || ns[1].equals("GIF")) {
+            if ("gif".equals(ns[1]) || "GIF".equals(ns[1])) {
                 gifHandler = new GifHandler(file.getAbsolutePath());
                 int width = gifHandler.getWidth();
                 int height = gifHandler.getHeight();

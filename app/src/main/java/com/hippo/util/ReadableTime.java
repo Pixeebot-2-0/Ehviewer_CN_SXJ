@@ -124,7 +124,7 @@ public final class ReadableTime {
                 int nowYear = sCalendar.get(Calendar.YEAR);
                 sCalendar.setTime(timeDate);
                 int timeYear = sCalendar.get(Calendar.YEAR);
-                boolean isZh = Locale.getDefault().getLanguage().equals("zh");
+                boolean isZh = "zh".equals(Locale.getDefault().getLanguage());
 
                 if (nowYear == timeYear) {
                     return (isZh ? DATE_FORMAT_WITHOUT_YEAR_ZH : DATE_FORMAT_WITHOUT_YEAR).format(timeDate);
