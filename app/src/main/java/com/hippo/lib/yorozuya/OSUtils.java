@@ -17,6 +17,7 @@
 package com.hippo.lib.yorozuya;
 
 import android.os.Looper;
+import io.github.pixee.security.BoundedLineReader;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -63,7 +64,7 @@ public final class OSUtils {
             try {
                 reader = new BufferedReader(new FileReader(PROCFS_MEMFILE), 64);
                 String line;
-                while ((line = reader.readLine()) != null) {
+                while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                     Matcher matcher = PROCFS_MEMFILE_FORMAT.matcher(line);
                     if (matcher.find() && MEMTOTAL_STRING.equals(matcher.group(1))) {
                         long mem = NumberUtils.parseLongSafely(matcher.group(2), -1L);
