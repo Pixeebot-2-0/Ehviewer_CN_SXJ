@@ -243,7 +243,7 @@ public class UConfigActivity extends ToolbarActivity {
                     encoding = "";
                 }
                 ResponseBody body = response.body();
-                if (mimeType.equals("text/html")) {
+                if ("text/html".equals(mimeType)) {
                     return new WebResourceResponse(mimeType, encoding, body.byteStream());
                 }
                 return new WebResourceResponse(mimeType, encoding, body.byteStream());
