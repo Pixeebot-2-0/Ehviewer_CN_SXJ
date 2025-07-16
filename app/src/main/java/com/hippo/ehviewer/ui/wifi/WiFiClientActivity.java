@@ -49,6 +49,7 @@ import com.hippo.ehviewer.dao.QuickSearch;
 import com.hippo.ehviewer.download.DownloadManager;
 import com.hippo.util.PermissionRequester;
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
+import io.github.pixee.security.BoundedLineReader;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -217,7 +218,7 @@ public class WiFiClientActivity extends AppCompatActivity {
             BufferedReader br = new BufferedReader(new FileReader(
                     "/proc/net/arp"));
             String line;
-            while ((line = br.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(br, 5_000_000)) != null) {
                 String[] splitted = line.split(" +");
                 if (splitted.length >= 4) {
                     String ip = splitted[0];
