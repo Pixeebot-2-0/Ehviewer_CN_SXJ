@@ -271,7 +271,7 @@ public class GalleryDetailParser {
             gd.isFavorited = null != gdf && !StringUtils.trim(gdf.text()).equals("Add to Favorites");
             if (gdf != null) {
                 final String favoriteName = StringUtils.trim(gdf.text());
-                if (favoriteName.equals("Add to Favorites")) {
+                if ("Add to Favorites".equals(favoriteName)) {
                     gd.favoriteName = null;
                 } else {
                     gd.favoriteName = StringUtils.trim(gdf.text());

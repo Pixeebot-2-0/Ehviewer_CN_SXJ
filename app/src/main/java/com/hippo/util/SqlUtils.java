@@ -43,8 +43,8 @@ public class SqlUtils {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             String tableName = cursor.getString(1);
-            if (!tableName.equals("android_metadata") &&
-                    !tableName.equals("sqlite_sequence"))
+            if (!"android_metadata".equals(tableName) &&
+                    !"sqlite_sequence".equals(tableName))
                 tables.add(tableName);
             cursor.moveToNext();
         }
